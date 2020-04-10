@@ -2,18 +2,18 @@
   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
     <li class="nav-item has-treeview menu-open">
       <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <i class="nav-icon fas fa-eye"></i>
         <p>
-          Gestión
+        Seguridad
           <i class="right fas fa-angle-left"></i>
         </p>
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{ url('/') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ url('usuarios') }}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Inicio
+                Usuarios
               </p>
             </a>
           </li>
@@ -28,7 +28,16 @@
             </a>
           </li>
       </ul>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ url('permisos') }}" class="nav-link">
+              <i class="nav-icon fas fa-bolt"></i>
+              <p>
+                Permisos
+              </p>
+            </a>
+          </li>
+      </ul>
     </li>
   </ul>
-  
 </nav>

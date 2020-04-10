@@ -9,3 +9,10 @@ Route::get('/', function () {
 Route::get('roles', function () {
     return view('role');
 });
+Route::get('permisos', function () {
+    return view('permission');
+});
+
+Route::get('usuarios', function () {
+    return view('user');
+});
