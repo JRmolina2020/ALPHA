@@ -16,3 +16,13 @@ Route::get('permisos', function () {
 Route::get('usuarios', function () {
     return view('user');
 });
+Route::group(["prefix" => "auth"], function () {
+    //categories
+    Route::resource('categoria', 'CategorieController')->except([
+        'show', 'create', 'edit'
+    ]);
+    Route::get('categoria/data', 'CategorieController@getdata');
+    Route::put('categoria/available/{id}', 'CategorieController@available');
+    Route::put('categoria/locked/{id}', 'CategorieController@locked');
+    //endcategories
+});
