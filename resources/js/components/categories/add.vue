@@ -45,6 +45,7 @@
                                         <label for>Nombre</label>
                                         <input
                                             type="text"
+                                            placeholder="Digitar el nombre de la categoria"
                                             v-bind:class="{
                                                 'form-control form-control-sm': true,
                                                 'is-invalid': errors.length > 0
@@ -70,6 +71,7 @@
                                         <label for>Descripción</label>
                                         <input
                                             type="text"
+                                            placeholder="Digitar la descripción de la categoria"
                                             v-bind:class="{
                                                 'form-control form-control-sm': true,
                                                 'is-invalid': errors.length > 0
@@ -119,11 +121,9 @@ export default {
                 let url = `${this.url}/${id}`;
                 try {
                     let response = await axios.put(url, this.form);
-                    swal(
-                        "Buen trabajo!",
-                        `${response.data.categorie.name} ha sido editado(a)`,
-                        "success"
-                    );
+                    Vue.$toast.open({
+                        message: "La categoria ha sido modidicada"
+                    });
                     this.clear();
                     this.$store.dispatch("ListCategorieA");
                     $("#modelcategorie").modal("hide");
@@ -137,10 +137,8 @@ export default {
                 };
                 try {
                     let response = await axios.post(this.url, categorie);
-                    swal({
-                        title: "Buen trabajo!",
-                        text: response.data.message,
-                        icon: "success"
+                    Vue.$toast.open({
+                        message: "La categoria ha sido creada"
                     });
                     this.clear();
                     this.$store.dispatch("ListCategorieA");

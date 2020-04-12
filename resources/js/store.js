@@ -6,8 +6,10 @@ export default new Vuex.Store({
     state: {
         users: [],
         categories: [],
+        permissions: [],
         status: false,
         urluser: "users",
+        urlpermission: "permisos/data",
         urlcategorie: "categoria/data"
     },
     mutations: {
@@ -16,6 +18,9 @@ export default new Vuex.Store({
         },
         ListCategorieM(state, item) {
             state.categories = item;
+        },
+        ListPermissionM(state, item) {
+            state.permissions = item;
         }
     },
     actions: {
@@ -32,6 +37,15 @@ export default new Vuex.Store({
             try {
                 let response = await axios.get(state.urlcategorie);
                 commit("ListCategorieM", response.data);
+                state.status = true;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async ListPermissionA({ commit, state }) {
+            try {
+                let response = await axios.get(state.urlpermission);
+                commit("ListPermissionM", response.data);
                 state.status = true;
             } catch (error) {
                 console.log(error);

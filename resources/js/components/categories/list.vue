@@ -19,7 +19,7 @@
             :filters="filters"
             :pageSize="10"
             @totalPagesChanged="totalPages = $event"
-            class="table table-striped  table-valign-middle table-borderless mt-3 table-bordered"
+            class="table table-striped table-valign-middle table-borderless mt-3 table-bordered"
         >
             <thead slot="head">
                 <tr>
@@ -47,18 +47,14 @@
                         <button
                             type="button"
                             @click="$emit('show', row)"
-                            class="
-                                btn   btn-flat btn-sm
-                                btn-warning"
+                            class="btn btn-flat btn-sm btn-warning"
                         >
                             <i class="fas fa-pencil-alt"></i>
                         </button>
                         <button
                             type="button"
                             @click="remove(row)"
-                            class="
-                                btn  btn-flat btn-sm
-                                btn-danger"
+                            class="btn btn-flat btn-sm btn-danger"
                         >
                             <i class="fas fa-trash"></i>
                         </button>
@@ -67,6 +63,7 @@
             </tbody>
         </v-table>
 
+        <!-- {{ currentUser.name }} -->
         <smart-pagination
             :currentPage.sync="currentPage"
             :totalPages="totalPages"
@@ -75,6 +72,7 @@
 </template>
 <script>
 import { mapState, mapMutations, mapActions } from "vuex";
+
 export default {
     data() {
         return {
@@ -100,10 +98,8 @@ export default {
             let url = this.url + row.id;
             let response = await axios.delete(url);
             try {
-                swal({
-                    title: "Buen trabajo!",
-                    text: `La categoria ${row.name} ${response.data.message}`,
-                    icon: "success"
+                Vue.$toast.open({
+                    message: "La categoria ha sido eliminada"
                 });
                 this.getcategories();
             } catch (error) {

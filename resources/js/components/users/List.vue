@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>LISTA DE USUARIOS</h1>
+    <div v-can="'destroy_notes'">tienes permiso al modulo</div>
   </div>
 </template>
 <script>

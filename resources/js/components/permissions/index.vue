@@ -1,13 +1,13 @@
 <template>
   <div>
-    <List></List>
+    <List-Permission></List-Permission>
   </div>
 </template>
 <script>
-import List from "./List";
+import ListPermission from "./list";
 export default {
   components: {
-    List
+    ListPermission
   }
 };
 </script>

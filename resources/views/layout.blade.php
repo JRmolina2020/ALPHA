@@ -1,3 +1,5 @@
+<body class="hold-transition sidebar-mini">
+  <div id="app" class="wrapper">
 @include('header')
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 <ul class="navbar-nav">
@@ -14,7 +16,7 @@
       <img src="{{asset('/img/user2-160x160.jpg')}}" class="img-circle elevation-0" alt="User Image">
     </div>
     <div class="info">
-      <a href="{{ url('/') }}" class="d-block">Alexander Pierce</a>
+      <a href="{{ url('/') }}" class="d-block">ewewe</a>
     </div>
   </div>
   {{--  navegation  --}}
