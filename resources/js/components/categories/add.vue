@@ -1,19 +1,13 @@
 <template>
     <div>
         <!-- Button trigger modal -->
-        <button
-            type="button"
-            class="btn btn-primary btn-sm btn-flat"
-            data-toggle="modal"
-            data-target="#modelcategorie"
-            @click="clear"
-        >
-            <i class="fas fa-plus"></i>
-        </button>
-
-        <div class="modal fade" id="modelcategorie">
+        <modalbutton
+            v-on:clear="clear"
+            title="Registrar categoria"
+        ></modalbutton>
+        <div class="modal fade" id="model">
             <div class="modal-dialog">
-                <div class="modal-content ">
+                <div class="modal-content">
                     <!-- panel header -->
                     <div v-if="!form.id" class="modal-header bg-primary">
                         <p class="modal-title">
@@ -102,8 +96,12 @@
     </div>
 </template>
 <script>
+import modalbutton from "../utilities/button";
 export default {
     name: "addcategorie",
+    components: {
+        modalbutton
+    },
     data() {
         return {
             url: "categoria",
@@ -121,38 +119,39 @@ export default {
                 let url = `${this.url}/${id}`;
                 try {
                     let response = await axios.put(url, this.form);
-                    Vue.$toast.open({
-                        message: "La categoria ha sido modidicada"
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `La categoria ${this.form.name} ha sido modificada.`,
+                        showConfirmButton: false,
+                        timer: 1500
                     });
-                    this.clear();
-                    this.$store.dispatch("ListCategorieA");
-                    $("#modelcategorie").modal("hide");
                 } catch (error) {
                     console.log(error.response);
                 }
             } else {
-                let categorie = {
-                    name: this.form.name,
-                    description: this.form.description
-                };
                 try {
-                    let response = await axios.post(this.url, categorie);
-                    Vue.$toast.open({
-                        message: "La categoria ha sido creada"
+                    let response = await axios.post(this.url, this.form);
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `La categoria ${this.form.name} ha sido registrada.`,
+                        showConfirmButton: false,
+                        timer: 1500
                     });
-                    this.clear();
-                    this.$store.dispatch("ListCategorieA");
-                    $("#modelcategorie").modal("hide");
                 } catch (error) {
                     console.log(error);
                 }
             }
+            this.clear();
+            this.$store.dispatch("ListCategorieA");
+            $("#model").modal("hide");
         },
         show(row) {
             this.form.id = row.id;
             this.form.name = row.name;
             this.form.description = row.description;
-            $("#modelcategorie").modal("show");
+            $("#model").modal("show");
         },
         clear() {
             this.form.id = "";

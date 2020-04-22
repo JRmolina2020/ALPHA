@@ -6,8 +6,8 @@ window.Axios = require("axios");
 import auth from "./mixins/Auth.js";
 import store from "./store";
 import SmartTable from "vuejs-smart-table";
-import VueToast from "vue-toast-notification";
-import "vue-toast-notification/dist/theme-default.css";
+import Swal from "sweetalert2";
+window.Swal = Swal;
 //start validate
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import { extend } from "vee-validate";
@@ -25,7 +25,6 @@ Vue.component("ValidationObserver", ValidationObserver);
 //end import
 //vue use
 Vue.use(SmartTable);
-Vue.use(VueToast);
 Vue.mixin(auth);
 //end vue use
 //componentes

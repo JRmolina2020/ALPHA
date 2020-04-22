@@ -1,6 +1,7 @@
+
+@include('header')
 <body class="hold-transition sidebar-mini">
   <div id="app" class="wrapper">
-@include('header')
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 <ul class="navbar-nav">
   <li class="nav-item">
@@ -28,7 +29,7 @@
 <div class="content-header">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-lg-8 col-sm-12 col-xs-12 col-md-12 principal">
         <div class="card card-outline card-primary">
           <div class="card-header">
             <h3 class="card-title">@yield('titlepanel')</h3>
